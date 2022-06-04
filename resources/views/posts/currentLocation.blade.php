@@ -58,11 +58,19 @@
             }
         }
     </script>
+    
+    <script>
+            // currentLocation.jsで使用する定数latに、controllerで定義した$latをいれて、currentLocation.jsに渡す
+            const lat = {{ $lat }};
+
+            // currentLocation.jsで使用する定数lngに、controllerで定義した$lngをいれて、currentLocation.jsに渡す
+            const lng = {{ $lng }};
+        </script>
     　 
     　　 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     　　 
 	    <script src="{{ asset('/js/setLocation.js') }}"></script>
-        <script src="{{ asset('/js/result.js') }}"></script>
+        <script src="{{ asset('/js/currentLocation.js') }}"></script>
 	    <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyBqwahXSEOQTLjwRFPLXzjfiio_MsOVspg&callback=initMap" async defer>
 	   </script>
 </html>
