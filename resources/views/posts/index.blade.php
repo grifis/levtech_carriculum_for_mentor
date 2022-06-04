@@ -10,7 +10,9 @@
         <h1>レバテックチーム開発</h1>
         <h2>{{ $knowledges->body }}</h2>
         <form action = "/update" method="POST">
-            <select name="update">
+            @csrf
+            @method('PUT')
+            <select name="update[body]">
                 <option value="update">更新順</option>
                 <option value="like">いいね順</option>
                 <option value="like_update">いいね更新順</option>
@@ -26,6 +28,7 @@
                     </h2>
                     <p class='body'>本文：{{ $post->body}}</p>
                     <p>カテゴリー:<a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a></p>
+                    <p><a href="/like/{{ $post->id}}">いいね</a>：{{ $post->like }}</p>
                     <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}"  method="post" style="display:inline">
                         @csrf
                         @method('DELETE')

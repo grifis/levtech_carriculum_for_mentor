@@ -42,7 +42,6 @@ class PostController extends Controller
     {
         $input_post = $request['post'];
         $post->fill($input_post)->save();
-        
         return redirect('/posts/' . $post->id);
     }
     
@@ -52,4 +51,15 @@ class PostController extends Controller
         return redirect('/');
     }
     
+    public function order(PostRequest $request, Post $post)
+    {
+        $input_post = $request['update'];
+        return redirect('/', $post->getPaginateByLimitOrder($input_post[body]));
+    }
+    
+    public function like(Post $post)
+    {
+        $post->increment('like');
+        return redirect('/');
+    }
 }
