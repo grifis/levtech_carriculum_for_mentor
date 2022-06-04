@@ -19,3 +19,5 @@ Route::get('/posts/{post}', 'PostController@show'); //投稿詳細画面
 Route::post('/posts', 'PostController@store'); //投稿保存操作
 Route::delete('/posts/{post}', 'PostController@delete'); //投稿削除
 Route::get('/categories/{category}', 'CategoryController@index'); //カテゴリー一覧画面
+
+Route::get('result', 'ResultController@currentLocation')->name('result.currentLocation');
