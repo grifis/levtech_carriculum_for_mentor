@@ -12,16 +12,16 @@ class Post extends Model
     protected $fillable = [
         'title',
         'body',
-        'weather_id',
+        'category_id',
         ];
     
     function getPaginateByLimit(int $limit_count = 5)
     {
-        return $this::with('weather')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        return $this::with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
     
     public function weather()
     {
-        return $this->belongsTo('App\Weather');
+        return $this->belongsTo('App\Category');
     }
 }

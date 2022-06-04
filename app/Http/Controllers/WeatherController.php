@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Weather;
+use App\Category;
 
-class WeatherController extends Controller
+class CategoryController extends Controller
 {
-    public function index(Weather $weather)
+    public function index(Category $category)
     {
-        return view('Weathers.index')->with(['posts' => $weather->getByWeather()]);
+        return view('Categories.index')->with(['posts' => $category->getByCategory()]);
     }
 }

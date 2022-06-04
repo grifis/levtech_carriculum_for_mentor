@@ -22,8 +22,8 @@
             <div class="category">
                 <h2>Category</h2>
                 <select name="post[weather_id]">
-                    @foreach($weathers as $weather)
-                        <option value="{{ $weather->id }}">{{ $weather->name }}</option>
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
                 </select>
             </div>
