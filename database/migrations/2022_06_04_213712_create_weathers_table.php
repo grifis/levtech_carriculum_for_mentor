@@ -15,8 +15,9 @@ class CreateWeathersTable extends Migration
     {
         Schema::create('weathers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 5);
+            $table->string('name',10);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

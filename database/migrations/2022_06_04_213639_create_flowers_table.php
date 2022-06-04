@@ -19,7 +19,7 @@ class CreateFlowersTable extends Migration
             $table->string('flower_image');
             $table->integer('weather_id')->unsigned();
             $table->timestamps();
-            
+            $table->softDeletes();
         });
     }
 
