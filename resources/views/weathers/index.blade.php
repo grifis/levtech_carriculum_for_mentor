@@ -8,7 +8,7 @@
     </head>
     <body>
         <h1>レバテックチーム開発</h1>
-        <h2>カテゴリー「{{$posts->first()->category->name}}」の一覧ページ</h2>
+        <h2>カテゴリー「{{$posts->first()->weather->name}}」の一覧ページ</h2>
         <div class='posts'>
             @foreach($posts as $post)
                 <div class='post'>
@@ -16,7 +16,7 @@
                         タイトル：<a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
                     </h2>
                     <p class='body'>本文：{{ $post->body}}</p>
-                    <p>カテゴリー:{{ $post->category->name }}</p>
+                    <p>カテゴリー:{{ $post->weather->name }}</p>
                     <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post" style="display:inline">
                         @csrf
                         @method('DELETE')
