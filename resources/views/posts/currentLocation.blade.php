@@ -71,6 +71,6 @@
     　　 
 	    <script src="{{ asset('/js/setLocation.js') }}"></script>
         <script src="{{ asset('/js/currentLocation.js') }}"></script>
-	    <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyBqwahXSEOQTLjwRFPLXzjfiio_MsOVspg&callback=initMap" async defer>
+	    <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key={{config('services.googlemap.apikey')}}&callback=initMap" async defer>
 	   </script>
 </html>
