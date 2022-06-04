@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use App\Post;
 use App\Category;
+use App\Comment;
 
 class PostController extends Controller
 {
