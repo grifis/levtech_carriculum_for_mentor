@@ -9,9 +9,9 @@ use App\Category;
 
 class PostController extends Controller
 {
-    public function index(Post $post)
+    public function map(Post $post)
     {
-        return view('posts/index')->with(['posts' => $post->getPaginateByLimit()]);
+        return view('posts/map')->with(['posts' => $post->getPaginateByLimit()]);
     }
     
     public function show(Post $post)
