@@ -8,6 +8,7 @@
     </head>
     <body>
         <h1>レバテックチーム開発</h1>
+        <h2>{{ $knowledges->body }}</h2>
         <h2>投稿一覧ページ</h2>
         <div class='posts'>
             @foreach($posts as $post)

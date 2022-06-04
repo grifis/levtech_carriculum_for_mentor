@@ -13,7 +13,7 @@ class CreateKnowledgeTable extends Migration
      */
     public function up()
     {
-        Schema::create('knowledge', function (Blueprint $table) {
+        Schema::create('knowledges', function (Blueprint $table) {
             $table->increments('id');
             $table->string('body',200);
             $table->timestamps();
