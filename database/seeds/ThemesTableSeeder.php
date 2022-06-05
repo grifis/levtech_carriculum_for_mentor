@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class CategoriesTableSeeder extends Seeder
+class ThemesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,25 +11,31 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('categories')->insert([
+        DB::table('themes')->insert([
             [
             'id' => '1',
-            'name' => 'PHP',
+            'title' => 'こんな雨天中止は嫌だ。',
             'created_at' => now(),
             'updated_at' => now(),
                 ],
                 [
             'id' => '2',
-            'name' => 'Python',
+            'title' => '貞子の唯一の悩みは?',
             'created_at' => now(),
             'updated_at' => now(),
                 ],
                 [
             'id' => '3',
-            'name' => 'Ruby',
+            'title' => 'SEの男性に言われがちなこと。',
             'created_at' => now(),
             'updated_at' => now(),
-                ]
+                ],
+                 [
+            'id' => '4',
+            'title' => '雨の日に遭遇するモンスターってなーあに。',
+            'created_at' => now(),
+            'updated_at' => now(),
+                ],
             ]);
     }
 }

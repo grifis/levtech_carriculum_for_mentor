@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostsTable extends Migration
+class CreateAnswersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('title', 50); //タイトル
-            $table->string('body', 200); //本文
+        Schema::create('answers', function (Blueprint $table) {
+            $table->Integer('theme_id')->unsigned();
+            
+            $table->Increments('id');
+            $table->foreign("theme_id")->references("id")->on("themes");
+            $table->string("body", 100);
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -29,6 +30,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('answers');
     }
 }
