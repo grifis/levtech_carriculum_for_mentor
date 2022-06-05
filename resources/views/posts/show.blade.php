@@ -9,19 +9,6 @@
         <link rel="stylesheet" href="/css/app.css">
     </head>
     <body>
-        <h1>投稿詳細ページ</h1>
-        <h2 class="title">
-            タイトル：{{ $post->title }}
-        </h1>
-        <div class="content">
-            <div class="content__post">
-                <p>本文：{{ $post->body }}</p>    
-            </div>
-        </div>
-        <p>カテゴリー:<a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a></p>
-        <div class="footer">
-            <p class="edit">[<a href="/posts/{{ $post->id }}/edit">編集</a>]</p>
-            <a href="/">一覧ページへ戻る</a>
-        </div>
+        <p>{{$weather['rain']['1h']}}</p>
     </body>
 </html>

@@ -34,4 +34,8 @@ return [
         'apikey' => env('GOOGLE_MAP_API'),
         ],
 
+    'openweathermap' => [
+        'key' => env('OPEN_WHATHER_MAP_API_KEY'),
+        'url' => env('OPEN_WHATHER_MAP_URL'),
+    ]
 ];
