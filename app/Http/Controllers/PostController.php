@@ -6,12 +6,30 @@ use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use App\Post;
 use App\Category;
+use GuzzleHttp\Client;
 
 class PostController extends Controller
 {
     public function map(Post $post)
     {
-        return view('posts/map')->with(['posts' => $post->getPaginateByLimit()]);
+        $lat = -54.625388616131495;
+        $lon = 158.8538197821135;
+        $apiKey = '1236b67a22e6499c7370b9f6d925778f';
+        $url = "https://api.openweathermap.org/data/2.5/weather?lat=$lat&lon=$lon&appid=$apiKey";
+        $method = "GET";
+        
+        $client = new Client();
+        
+        $response = $client->request($method, $url);
+        $data = $response->getBody();
+        $data = json_decode($data, true);
+        if(isset($data['rain']['1h'])){
+            $rain = $data['rain']['1h'];
+        }else{
+            $rain = 0;
+        }
+        
+        return view('posts/map')->with(['rain' => $rain]);
     }
     
     public function show(Post $post)
