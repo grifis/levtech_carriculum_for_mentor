@@ -5,6 +5,7 @@
         <title>Blog</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link rel='stylesheet' href='{{ asset("css/index.css") }}' type='text/css'>
     </head>
     <body>
         <h1>レバテックチーム開発</h1>
@@ -20,45 +21,14 @@
     　　 {!! Form::hidden('lng','lng',['class'=>'lng_input']) !!}
     　　 {{--setlocation.jsを読み込んで、位置情報取得するまで押せないようにdisabledを付与し、非アクティブにする。--}}
     　　 {{--その後、disableはfalseになるようにsetlocation.js内に記述した--}}
-    　　 {!! Form::submit("現在地を表示", ['class' => "btn btn-success btn-block",'disabled']) !!}
+    　　 {!! Form::submit("現在地", ['class' => "btn btn-success btn-block",'disabled']) !!}
     　　 {!! Form::close() !!}
+    　　 
+    　　 　 <button type=“button” onclick="location.href='/posts/london'">ロンドン</button>
+    　　 <button type=“button” onclick="location.href='/posts/namibu'">ナミブ砂漠</button>
+    　　 <button type=“button” onclick="location.href='/posts/makko'">鹿児島県</button>
     　
-	    
-        <h2>投稿一覧ページ</h2>
-        <div class='posts'>
-            @foreach($posts as $post)
-                <div class='post'>
-                    <h2 class='title'>
-                        タイトル：<a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
-                    </h2>
-                    <p class='body'>本文：{{ $post->body}}</p>
-                    <p>カテゴリー:<a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a></p>
-                    <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}"  method="post" style="display:inline">
-                        @csrf
-                        @method('DELETE')
-                        <button type="button" onClick="deletePost({{$post->id}});">削除</button> {{--script内に定義したdeletePostを使用している--}}
-                    </form>
-                </div>
-            @endforeach
-        </div>
-        <div class='paginate'>
-            {{ $posts->links() }}
-        </div>
-        <div>
-            [<a href='/posts/create'>新規作成</a>]
-        </div>
-    </body>
-    <script>
-        function deletePost(post_id) {
-            form = document.getElementById('form_' + post_id);  //各投稿ごとのdeleteのformを取得
-            is_submit = confirm('本当に削除してもよろしいですか？'); //はいの場合true,いいえの場合falseをis_submitに格納
-            
-            if(is_submit) {  //is_submitがtrueの場合のみ、{}の中の処理が行われる
-                form.submit();  //deleteするformをsubmitする（投稿を削除している）
-            }
-        }
-    </script>
-    　 
+	
     　　 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     　　 
 	    <script src="{{ asset('/js/setLocation.js') }}"></script>

@@ -30,24 +30,72 @@ class OpenWeatherController extends Controller
         $weather_data = $response->getBody();
         $weather_data = json_decode($weather_data, true);
         
-        //$weathers = array();
+         return view('posts/show', [
+                'weather' => $weather_data, 
+                'posts' => $post->getPaginateByLimit(),]
+        );
+        }
         
-        //$weathers[$i] = array(
-        //'temp' => $list['main']['temp'],
-        //'humidity' => $list['main']['humidity'],
-        //'weather'=> $list['weather'][0]['main']
-        //);
-        //dd($weather_data['rain']['1h']);
+        
+        public function londonData(Request $request, Post $post) {
+        $API_KEY = config('services.openweathermap.key');
+        $base_url = config('services.openweathermap.url');
+
+        $url = "$base_url?lat=51.509&lon=-0.126&APPID=$API_KEY";
+
+        $client = new Client();
+
+        $method = "GET";
+        $response = $client->request($method, $url);
+
+        $weather_data = $response->getBody();
+        $weather_data = json_decode($weather_data, true);
         
         return view('posts/show', [
                 'weather' => $weather_data, 
-                'posts' => $post->getPaginateByLimit(),
-                // 現在地緯度latをbladeへ渡す
-                'lat' => $lat,
-            // 現在地経度lngをbladeへ渡す
-                'lng' => $lng,]
+                'posts' => $post->getPaginateByLimit(),]
+        );
+        }
+        
+        public function namibuData(Request $request, Post $post) {
+        $API_KEY = config('services.openweathermap.key');
+        $base_url = config('services.openweathermap.url');
+
+        $url = "$base_url?lat=24.457&lon=15.1635&APPID=$API_KEY";
+
+        $client = new Client();
+
+        $method = "GET";
+        $response = $client->request($method, $url);
+
+        $weather_data = $response->getBody();
+        $weather_data = json_decode($weather_data, true);
+        
+        return view('posts/show', [
+                'weather' => $weather_data, 
+                'posts' => $post->getPaginateByLimit(),]
         );
         
+    }
+    
+     public function makkoData(Request $request, Post $post) {
+        $API_KEY = config('services.openweathermap.key');
+        $base_url = config('services.openweathermap.url');
+
+        $url = "$base_url?lat=31.3146&lon=131.217&APPID=$API_KEY";
+
+        $client = new Client();
+
+        $method = "GET";
+        $response = $client->request($method, $url);
+
+        $weather_data = $response->getBody();
+        $weather_data = json_decode($weather_data, true);
+        
+        return view('posts/show', [
+                'weather' => $weather_data, 
+                'posts' => $post->getPaginateByLimit(),]
+        );
         
     }
 }
