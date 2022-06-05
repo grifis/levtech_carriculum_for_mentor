@@ -11,8 +11,9 @@ use App\Knowledge;
 
 class PostController extends Controller
 {
-    public function index(Post $post)
+    public function index(Post $post, Knowledge $knowledge)
     {
+
         
         // クライアントインスタンス生成
         $client = new \GuzzleHttp\Client();
@@ -34,9 +35,11 @@ class PostController extends Controller
         $weather = $questions['current']['weather'][0]['description'];
         // dd($questions);
         // index bladeに取得したデータを渡す
+        // dd($knowledge->random());
         return view('posts/index')->with([
             'posts' => $post->getPaginateByLimit(),
             'weather' => $weather,
+            'knowledges' => $knowledge->random()
         ]);
         
     }

@@ -11,6 +11,17 @@
         <h1>雨の日わくわく掲示板</h1>
         <!--今日の天気を表示してます。-->
         <div>{{ $weather }}</div>
+        <h2>{{ $knowledges->body }}</h2>
+        <form action = "/update" method="POST">
+            @csrf
+            @method('PUT')
+            <select name="update[body]">
+                <option value="update">更新順</option>
+                <option value="like">いいね順</option>
+                <option value="like_update">いいね更新順</option>
+            </select>
+            <input type="submit" value="更新"/>
+        </form>
         <h2>投稿一覧ページ</h2>
         <div class='posts'>
             @foreach($posts as $post)
@@ -20,6 +31,7 @@
                     </h2>
                     <p class='body'>本文：{{ $post->body}}</p>
                     <p>カテゴリー:<a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a></p>
+                    <p><a href="/like/{{ $post->id}}">いいね</a>：{{ $post->like }}（最新のいいね：{{ $post->like_updated_at}}）</p>
                     <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}"  method="post" style="display:inline">
                         @csrf
                         @method('DELETE')
