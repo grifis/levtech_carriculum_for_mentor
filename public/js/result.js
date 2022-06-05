@@ -1,39 +1,9 @@
+console.log(kasa);
 var map;
 var marker = [];
 var infoWindow = [];
-var markerData = [ // マーカーを立てる場所名・緯度・経度
-	{
-		name: '東京',
-		lat: 35.6954806,
-		lng: 139.76325010000005,
-		count: 0,
-	}, {
-		name: '小川町駅',
-		lat: 35.6951212,
-		lng: 139.76610649999998,
-		count: 5,
-	}, {
-		name: '淡路町駅',
-		lat: 35.69496,
-		lng: 139.76746000000003,
-		count: 0,
-	}, {
-		name: '御茶ノ水駅',
-		lat: 35.6993529,
-		lng: 139.76526949999993,
-		count: 8,
-	}, {
-		name: '神保町駅',
-		lat: 35.695932,
-		lng: 139.75762699999996,
-		count: 4,
-	}, {
-		name: '新御茶ノ水駅',
-		lat: 35.696932,
-		lng: 139.76543200000003,
-		count: 1,
-	}
-];
+var markerData = kasa;
+
 
 function initMap() {
 	// 地図の作成
@@ -54,7 +24,7 @@ function initMap() {
 		markerEvent(i); // マーカーにクリックイベントを追加
 		
 		infoWindow[i] = new google.maps.InfoWindow({ // 吹き出しの追加
-			content: '<div class="count"><a href="post/{umbrella}/umbrella">' + markerData[i]['count'] + '</a></div>' // 吹き出しに表示する内容
+			content: '<div class="count"><a href="posts/' + markerData[i]['id'] + '">' + markerData[i]['count'] + '</a></div>' // 吹き出しに表示する内容
 		});
 
 		if (markerData[i]['count'] == 0){
@@ -70,7 +40,7 @@ function initMap() {
                 icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAA/pJREFUWEftl1tsFFUch78zs7OXLt1Wai/aYmyDkOijRl+UtqCGGH0BL6WKpUmpDz4oaSw++LB9ITGt4iXERDCACjVq+2RUJArWkhhN38SAGElLoc5atFt72Z3bMWenDQFb2XYxmYdOMpmdzbl85/v9z8yuIOCHCDgfK4CFJrRiMDgGt7zxJf0vbi4U6Nr+hUecTGqcTkQwYsOc1aoZes4B5I0CXQagFDz/+QP88WsVJdWQmSoHsZnM5CbiN71JZuZn6tZnGTkLiYpR9PAQbz+SXS7w0gBfOHaAyXGNm299iJl0DbPTEC+FaBGMnoHqO2BmGqQNoQiEY8OkLgxSVTtLd8PO5UDmB/jSt938/stTVK5dg+VAPAKpi7C6EkIhkAIunYeK28DQAQ88j9wCtAgYIUgNX6C8toue+veWAvrfgLu+ugdXHGHqr3WUrIZYFKQHrgIAIga4Ljjq3oWwAUKAphA0SI/710QpZByw0qCHIRxfR3f9uXxAFwfcPdBENtPrTxzzLUgHpiYhVgyRMDmbajsoYE2ArpF7N6n7HKiA6TQUlfhGNQ0uXwKhT5Aoa6K48ThJoZa66LEwYOfJ7bjyLXRKc/G5EnQB4yOq8P36modR9tTnkA4ZG6T0wRSgOkMCRs/BLWuvgP/9J7j2RRLlLby+8eulAXacuB9dG2DCFDmY3GSqrCSMqTq73f9O3SuYcMi3o0yGNP86b1GBqzNrQcjw2ym7qoFrqxQ8Yl4ZycaJxSCvNtg5WIx0JpmegKI4GFGwXb+vY4Nh+HCqnuIGWCrKOXgFmnWuWFNgahG2Mixg7DeoqvVjVguzLbCzEF2lFnUvrzX8uBDk1YAdJ/YjvDY8B/SID6MiVlpSI1CxBoSaeK7mnLnoczHPDaUA1E5WpnKbSYLjwvgwVNX5YymJqn1qGMpqQNd/oLvhvusDvjzwE0KzcO06hL4PyRiutEDGcWa7iBa1IeR5XGljADNANCJwncTd6cH+oZL6TWCBEfbnUpb0kI7tajjWN4SjX+DJUwimEDRiZx5GaqfR9OPs3bjn+oD57PtF2mxrbTd7D75bWcAQC3bN70Gdx6zbdrSbvYdWAPNQtUiTx59pNT/98GBwI35ie6v5yQcBBtzS3GL2Hz0cXIOB3yTNre3m0SA/Zh7d2mR+1vdRcCMOvMEnn20zP37/QHANbn16h9l35FCAAZtbzL5AP2Zadpq9h/cH16Cx69i4benr2ffg5eW/MP/ds7BfM8nvE1hWnD0bxnjlVIpQaQ3Ju6zgAKp/ftK7k0j4DJazl1c3BCzi3ScfA/EOkiI8adPTEDBAlWXndx143ip66rtuZLTzYxVWg/8H0TVjrgAWKvkf9Jh5OJrwEYcAAAAASUVORK5CYII='
 		    });
 		}
-		
+		console.log(markerData[i]);
 	}
 }
 

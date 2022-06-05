@@ -1,5 +1,4 @@
-@extends('layouts.app')　　　　　　　　　　　　　　　　　　
-
+@extends('layouts.app')
 @section('content')
 
 <!DOCTYPE html>
@@ -14,10 +13,11 @@
     <body>
         <h1>傘詳細ページ</h1>
         <h2 class="title">
-            場所：{{$umbrella->name}}
+            場所：{{$kasa->name}}
         </h2>
-        <p class="umbrella_count">残数：{{ $umbrella->count }}</p>
+        <p class="umbrella_count">残数：{{ $kasa->count }}</p>
         <p>QRコードを読み取ってください</p>
+        <a href="/">地図に戻る</a>
     </body>
 </html>
 
