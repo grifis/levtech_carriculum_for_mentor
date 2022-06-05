@@ -22,6 +22,11 @@
     　　 {{--その後、disableはfalseになるようにsetlocation.js内に記述した--}}
     　　 {!! Form::submit("周辺を表示", ['class' => "btn btn-success btn-block",'disabled']) !!}
     　　 {!! Form::close() !!}
+    　　 
+    　　 <p>緯度：{{$lat}}</p>
+    　　 <p>経度：{{$lng}}</p>
+    　　 
+    　　 <a href='/posts/join'>現在地の降水量</a>
     　
 	    
         <h2>投稿一覧ページ</h2>
