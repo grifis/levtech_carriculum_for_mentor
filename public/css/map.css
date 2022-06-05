@@ -75,6 +75,7 @@ a{
   /* The height is 400 pixels */
   width: 700px;
   /* The width is the width of the web page */
+  z-index:10;
 }
 
 

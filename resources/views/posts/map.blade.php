@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -42,6 +41,7 @@
     <script type="application/javascript" src="{{ asset('js/result.js') }}"></script>
 	<script type="application/javascript" src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyA1L0f4yQ3EIGy6TsFSt7W6c8dZ_p2cIG0&callback=initMap" async defer>
 	</script>
+</div>
 </html>
 
 @endsection
