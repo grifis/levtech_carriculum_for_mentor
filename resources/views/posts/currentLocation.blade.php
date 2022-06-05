@@ -12,7 +12,7 @@
         <div id="map" style="height:500px; width:500px">
 	    </div>
 	    
-	    {!! Form::open(['route' => 'result.currentLocation','method' => 'get']) !!}
+	    {!! Form::open(['route' => 'show.show','method' => 'get']) !!}
     　　 {{--隠しフォームでresult.currentLocationに位置情報を渡す--}}
     　　 {{--lat用--}}
     　　 {!! Form::hidden('lat','lat',['class'=>'lat_input']) !!}
@@ -26,7 +26,12 @@
     　　 <p>緯度：{{$lat}}</p>
     　　 <p>経度：{{$lng}}</p>
     　　 
-    　　 <a href='/posts/join'>現在地の降水量</a>
+    　　 <!--<form action="/posts/join" method="POST">-->
+       <!--     @csrf-->
+       <!--     <input type="text" value="{{$lat}}"/>-->
+       <!--     <input type="text" value="{{$lng}}"/>-->
+       <!--     <input type="submit" value="現在地の降水量"/>-->
+       <!-- </form>-->
     　
 	    
         <h2>投稿一覧ページ</h2>

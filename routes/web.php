@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/posts/join', 'OpenWeatherController@weatherData');
+// Route::post('/posts/join', 'OpenWeatherController@weatherData');
 Route::get('/', 'PostController@index'); //一覧画面
 //Route::get('/result', 'OpenWeatherController@weatherData');
 Route::get('/posts/create', 'PostController@create'); //投稿作成画面
@@ -23,3 +23,4 @@ Route::delete('/posts/{post}', 'PostController@delete'); //投稿削除
 Route::get('/categories/{category}', 'CategoryController@index'); //カテゴリー一覧画面
 
 Route::get('result', 'ResultController@currentLocation')->name('result.currentLocation');
+Route::get('show', 'OpenWeatherController@weatherData')->name('show.show');

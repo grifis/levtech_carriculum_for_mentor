@@ -8,13 +8,17 @@ use App\Post;
 
 class OpenWeatherController extends Controller
 {
-        public function weatherData(Post $post) {
+        public function weatherData(Request $request, Post $post) {
         $API_KEY = config('services.openweathermap.key');
         $base_url = config('services.openweathermap.url');
         $city = 'Tokyo';
+        $lat = $request->lat;
+        $lng = $request->lng;
+        
+        // dd($lat);
 
         //$url = "$base_url?units=metric&q=$city&APPID=$API_KEY";
-        $url = "$base_url?lat=31.5965&lon=130.5571&APPID=$API_KEY";
+        $url = "$base_url?lat=$lat&lon=$lng&APPID=$API_KEY";
 
         
          // 接続
@@ -37,7 +41,11 @@ class OpenWeatherController extends Controller
         
         return view('posts/show', [
                 'weather' => $weather_data, 
-                'posts' => $post->getPaginateByLimit()]
+                'posts' => $post->getPaginateByLimit(),
+                // 現在地緯度latをbladeへ渡す
+                'lat' => $lat,
+            // 現在地経度lngをbladeへ渡す
+                'lng' => $lng,]
         );
         
         

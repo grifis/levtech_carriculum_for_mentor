@@ -9,6 +9,17 @@
         <link rel="stylesheet" href="/css/app.css">
     </head>
     <body>
-        <p>{{$weather['rain']['1h']}}</p>
+        
+        @if($weather['weather']['0']['id'] ===500 or $weather['weather']['0']['id'] ===531)
+            <a href="https://open.spotify.com/playlist/6IX5cuygyqVO6nZnCVUVmQ">今日の雨におすすめのプレイリスト</a>
+        @elseif($weather['weather']['0']['id'] >=501 or $weather['weather']['0']['id'] <522)
+            <a href="https://open.spotify.com/playlist/41VeP3G3G8W35pVrrcSxUf">今日の雨におすすめのプレイリスト</a>
+        @else
+            <p>残念、今日は雨が降ってない…</p>
+        @endif
+        
+        <!--<?php-->
+        <!--dd($weather)?>-->
+       
     </body>
 </html>
