@@ -3,7 +3,7 @@ var marker = [];
 var infoWindow = [];
 var markerData = [ // マーカーを立てる場所名・緯度・経度
 	{
-		name: 'TAM 東京',
+		name: '東京',
 		lat: 35.6954806,
 		lng: 139.76325010000005,
 		count: 0,
