@@ -8,15 +8,27 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
+        <div class="top-wrapper">
         <h1>雨の日わくわく掲示板</h1>
+        </div>
         <!--今日の天気を表示してます。-->
-        <div>{{ $weather }}</div>
+        <style>
+        .word{
+            color:red;
+            font-style:italic;
+        }
+        <div　class ="weather">{{ $weather }}</div>
+        </style>
+        
         <style>
         .word{
             color:red;
             font-style:italic;
         }
         </style>
+        <div class = "posting">
+            [<a href='/posts/create'>新規作成</a>]
+        </div>
         <div class = "word">
             <h2>{{ $knowledges->sentence }}</h2>
         </div>
@@ -49,9 +61,7 @@
         <div class='paginate'>
             {{ $posts->links() }}
         </div>
-        <div>
-            [<a href='/posts/create'>新規作成</a>]
-        </div>
+        
     </body>
     <script>
         function deletePost(post_id) {
