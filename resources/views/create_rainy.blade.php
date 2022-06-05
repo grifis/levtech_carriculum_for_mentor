@@ -23,6 +23,7 @@
             <input type="hidden" name="post[weather_id]" value="{{ $weather->id }}"/>
             <input type="hidden" name="post[category_id]" value="1"/>
             <input type="submit" value="Save"/>
+            <a href="/abc">count</a>
         </form>
         <div class="back">[<a href="/weathers/rainy/1">Back</a>]</div>
     </body>
