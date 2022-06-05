@@ -8,14 +8,20 @@
     </head>
     <body>
         <h1>レバテックチーム開発</h1>
-        <h2>{{ $knowledges->body }}</h2>
-        <form action = "/update" method="POST">
-            @csrf
-            @method('PUT')
-            <select name="update[body]">
-                <option value="update">更新順</option>
-                <option value="like">いいね順</option>
-                <option value="like_update">いいね更新順</option>
+        <style>
+        .word{
+            color:red;
+            font-style:italic;
+        }
+        </style>
+        <div class = "word">
+            <h2>{{ $knowledges->sentence }}</h2>
+        </div>
+        <form action = "/update" method="GET">
+            <select name="update">
+                <option name = "select" value="update">更新順</option>
+                <option name = "select" value="like">いいね順</option>
+                <option name = "select" value="like_update">いいね更新順</option>
             </select>
             <input type="submit" value="更新"/>
         </form>
@@ -23,12 +29,12 @@
         <div class='posts'>
             @foreach($posts as $post)
                 <div class='post'>
-                    <h2 class='title'>
+                    <h3 class='title'>
                         タイトル：<a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
-                    </h2>
+                    </h3>
                     <p class='body'>本文：{{ $post->body}}</p>
                     <p>カテゴリー:<a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a></p>
-                    <p><a href="/like/{{ $post->id}}">いいね</a>：{{ $post->like }}（最新のいいね：{{ $post->like_updated_at}}）</p>
+                    <p><a href="/like/{{ $post->id }}">いいね</a>：{{ $post->like->like }}（最新のいいね：{{ $post->like->updated_at}}）</p>
                     <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}"  method="post" style="display:inline">
                         @csrf
                         @method('DELETE')

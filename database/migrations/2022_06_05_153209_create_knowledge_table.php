@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddLikeColumnToPostsTable extends Migration
+class CreateKnowledgeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class AddLikeColumnToPostsTable extends Migration
      */
     public function up()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->integer('like')->default(0);
-            $table->timestamp('like_updated_at')->useCurrent()->nullable();
+        Schema::create('knowledge', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('sentence',200);
+            $table->timestamps();
         });
     }
 
@@ -26,8 +27,6 @@ class AddLikeColumnToPostsTable extends Migration
      */
     public function down()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('knowledge');
     }
 }

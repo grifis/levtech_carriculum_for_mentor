@@ -8,6 +8,7 @@ use App\Post;
 use App\Category;
 use App\Comment;
 use App\Knowledge;
+use App\Like;
 
 class PostController extends Controller
 {
@@ -26,10 +27,13 @@ class PostController extends Controller
         return view('posts/create')->with(['categories' => $category->get()]);;
     }
     
-    public function store(PostRequest $request, Post $post)
+    public function store(PostRequest $request, Post $post, Like $like)
     {
         $input = $request['post'];
         $post->fill($input)->save();
+        $like->post_id = $post->id;
+        $like->like = 0;
+        $like->save();
         return redirect('/posts/' . $post->id);
     }
     
@@ -51,17 +55,21 @@ class PostController extends Controller
         return redirect('/');
     }
     
-    public function order(PostRequest $request, Post $post)
+    public function order(Request $request, Post $post, Knowledge $knowledge)
     {
-        dd($request);
-        return redirect('/');
+        //dd($request->input('update'));
+        if($request->input('update') == 'like'){
+            $test = $post->get();
+            dd($test->find(1)->id);
+            //dd($post);
+        }
+        return view('posts/index')->with(['posts' => $post->paginate(5), 'knowledges' => $knowledge->ramdom()]);
     }
     
-    public function like(Post $post)
+    public function like(Post $post, Knowledge $knowledge)
     {
-        $post->increment('like');
-        $post->like_updated_at = now();
-        $post->save();
-        return redirect('/');
+        $post->like->increment('like');
+        $post->like->save();
+        return view('posts/index')->with(['posts' => $post->getPaginateByLimit(), 'knowledges' => $knowledge->ramdom()]);
     }
 }
