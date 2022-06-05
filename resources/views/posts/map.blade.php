@@ -1,23 +1,65 @@
 @extends('layouts.app')　　　　　　　　　　　　　　　　　　
 
 @section('content')
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="css/map.css">
         <title>Blog</title>
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-    </head>
-    <body>
         <div class='title'>
             <h1>傘に７００円も払ってたまるか</h1>
         </div>
-        <div id='container'>
-            <div id="map"></div>
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+    <body>
+    <div id="map"></div>
+    </head>
+    <div class="container">
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div><
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div><
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
         </div>
+    
         <div class='explanation'>
             <p>傘マークの基準は以下の通りです。</p>
             <p><image src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABB1JREFUWEftl1toHUUYx/8zs5fsnvS0JkLQ9KS2sV6SaBspKOh7BUUQmnJKmsSEgBR86ZMPPgl9FvFRvPVGQxvwrfjgBeyThNKkMQm2tprTVNmKISbnnD1n98x8MrOpaJI2qSeBfeg87c7OfPOb/3++2RmGlBeWcj48BKzXoYcKpkbBEbR9lUfh1XqBVvbfNIvPYlfQi9mWVAAW3K72S9XFF7YJwZqEg+2Cs+kw/Hiv571NYOp2FAIQ6Gpwf9pTmpqoB/qBFLzmP/vajWr1zZ2280xI9PKdWox214fLGS6XltDtZ0GMYbK0iPYGH1lhTU6FS2PPe41RW/Hqsf8DuiHAX7zO438q+Y4iND9q29sZU5gohXjO92EzHYKhEEVoc2zDUFESEhwuYyBGsBmn6XJx7inXfX9PeebTBwG9L+BsY3cHo9rBQhx98Jht6YFQI8JcVDUwjDEwCDPefBxih+2AgUPXEhQiReCMw2YaOnm3hXXNF/z13OL49Y2A3hOwkO3OE8lzkgAiBYvBwAVxhGbLRgMXBgQgo+DdosGSel0Yykoiw63lV8LtKALnfKGVuz2tpStfrwe5JuBc9kCfouijcq22w7dsTWji/CVjA5rhdsJkqgmMcShSy0iai4OUNApHRLhRreBp14HFbdNuXirEKr7V4li9bUvTl+4HuQpwdtu+Vzhj3/9YKrEOzzEqJJYRJsoh9mcyUEoa6xIiBiIyLZJnBcEd00YvzwScm2dtv56QImn6cC6UFLx598L4wr0gVwEWGrvkHzXJG7mAx5PPOnAMgoCCgAWlbTTJkRQ9oGBanXi5hv9LYUOG6bCIDi/zjxuLUqJKCs1CQNSwN1ed+nktyP8AFhq7TkjCexIwCztJgsS+36IqHrdtcG4ZlTQUY8LYa8ryMuBMmATRr3oOehXo9tOVMjobfDNd7YZW8GZUwW7X0yOM7ipO9awL+Gums8SZ5UvSFurISjFwRQxWpACHs5gzMUaydlFS5RtLeC6H6KpR7d3QsVsykfyOMfqSpLxiw+IRxQ4s+xhA+SrBbDuKYgJEyBnzdWY3CEsLMbZzcfwlvSJWQm5oH1wv0/T3nqODwYUzn6fjV7cW8OG+weD86TQD9g8F5099ll4F8wPDwcjJT9IL2NM3GFxIs8WpBzwyMBycS7PF+f7hYORUitfg4bRn8aHegWD07Mn0ZnG+fygYSfM+mPosPnT0rWD0zBcptrhvKBg5neJf3bWm7nmvVHkxV53Z0GVoIyek5LBcR7ne9GTWrtiZJ8ozv9/K7ltATAdz4dUf6gi5qmtdgAWv8whxnmNx7SIc8e2dott6AJfvnvs3hbMuwJt+5xsWEx/qyxtAj+SKk+lLkrns/hNK0fG24kRmUyRbEaQuBbcCaMvuJFsFm3oF/waUNbk4yszX8AAAAABJRU5ErkJggg=='>ここには傘がありません。残念でしたね。</image>
@@ -31,6 +73,7 @@
     <script type="application/javascript" src="{{ asset('js/result.js') }}"></script>
 	<script type="application/javascript" src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyA1L0f4yQ3EIGy6TsFSt7W6c8dZ_p2cIG0&callback=initMap" async defer>
 	</script>
+</div>
 </html>
 
 @endsection
