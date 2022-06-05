@@ -17,6 +17,24 @@ class PostController extends Controller
         // return redirect('/posts/' . $post->id);
     }
     
+    public function page_change(Post $post){
+        $count_rainy = Post::where('weather_id',1)->count();
+        $count_sunny = Post::where('weather_id',2)->count();
+        if($count_rainy-$count_sunny<1){
+            return view('home1');
+        }
+        elseif($count_rainy-$count_sunny<2){
+            return view('home2');
+        }
+        elseif($count_rainy-$count_sunny<3){
+            return view('home3');
+        }
+    }
+    
+   // public function index(){
+     //   $count = \App\Post::count();
+       // console.log($count);
+    //}
     // public function index(Post $post)
     // {
     //     return view('posts/index')->with(['posts' => $post->getPaginateByLimit()]);

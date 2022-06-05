@@ -15,7 +15,7 @@
             <a href='/weathers/sunny/2'>Sunny</a>
         </h2>
         <div class='image'>
-            //
+            <p>test1</p>
         </div>
     </body>
 </html>
