@@ -23,10 +23,10 @@ class PostController extends Controller
         if($count_rainy-$count_sunny<1){
             return view('home1');
         }
-        elseif($count_rainy-$count_sunny<2){
+        elseif($count_rainy-$count_sunny<4){
             return view('home2');
         }
-        elseif($count_rainy-$count_sunny<3){
+        elseif($count_rainy-$count_sunny<15){
             return view('home3');
         }
     }
