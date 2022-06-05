@@ -1,7 +1,69 @@
+h1{
+	font-size:70px;
+}
+
+.circle{
+	display:flex;
+}
+
+.semicircle-bottom {
+	width: 20%;
+	height: 75px;
+	border-radius: 0 0 75px 75px; /* 上側を丸める */
+	border-top: 0; /* 直線部分を消す */
+	margin: 0;
+	background-color:white;
+}
+
+.cquarter-circle-3 {
+	position: relative;
+	width: 100px;
+	height: 100px;
+	float:right;
+}
+
+.cquarter-circle-3::after {
+	content: "";
+	position: absolute;
+	border: solid white;
+	border-width: 100px 100px 0 0;
+	border-bottom-left-radius: 100px;
+	background-color:white;	
+}
+
+.cquarter-circle-4 {
+	position: relative;
+	width: 100px;
+	height: 100px;
+	float:left;
+}
+
+.cquarter-circle-4::after {
+	content: "";
+	position: absolute;
+	border: solid white;
+	border-width: 100px 100px 0 0;
+	border-bottom-right-radius: 100px;
+	background-color:white;	
+}
+
+body{
+  background-image:url("https://4.bp.blogspot.com/-VWkMHf8GvBY/WwJZelpG8iI/AAAAAAABMFI/oHzGVAH4T6g4GZ7XCKYkMRpBzo-CSBPrACLcBGAs/s800/bg_rain_natural_sky.jpg");
+}
+ 
+.explanation{
+  width:700px;
+  margin: 0 auto;
+  background-color:white;
+}
+
 h1, p {
   text-align: center
 }
 
+a{
+  font-size:30px;
+}
 
 #container {
 	width: 700px;
@@ -14,4 +76,5 @@ h1, p {
   width: 700px;
   /* The width is the width of the web page */
 }
+
 

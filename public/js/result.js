@@ -4,10 +4,26 @@ var marker = [];
 var infoWindow = [];
 var markerData = kasa;
 
+var nowlat;
+var nowlng;
+console.log(navigator.geolocation);
+
+if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(
+        function(position){
+        	console.log('test')
+            var crd = position.coords; //crdに緯度経度の配列を格納
+            var nowlat = crd.latitude;
+            var nowlng = crd.longitude;
+            console.log(nowlat);
+        }
+    ); 
+}
+console.log(nowlat)
 
 function initMap() {
 	// 地図の作成
-	var mapLatLng = new google.maps.LatLng({lat: markerData[0]['lat'], lng: markerData[0]['lng']}); // 緯度経度のデータ作成
+	var mapLatLng = new google.maps.LatLng({lat: 35.6954806,lng: 139.76325010000005}); // 緯度経度のデータ作成
 	map = new google.maps.Map(document.getElementById('map'), { // #mapに地図を埋め込む
 		center: mapLatLng, // 地図の中心を指定
 		zoom: 13 // 地図のズームを指定
