@@ -28,7 +28,7 @@
                     </h2>
                     <p class='body'>本文：{{ $post->body}}</p>
                     <p>カテゴリー:<a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a></p>
-                    <p><a href="/like/{{ $post->id}}">いいね</a>：{{ $post->like }}</p>
+                    <p><a href="/like/{{ $post->id}}">いいね</a>：{{ $post->like }}（最新のいいね：{{ $post->like_updated_at}}）</p>
                     <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}"  method="post" style="display:inline">
                         @csrf
                         @method('DELETE')

@@ -53,13 +53,15 @@ class PostController extends Controller
     
     public function order(PostRequest $request, Post $post)
     {
-        $input_post = $request['update'];
-        return redirect('/', $post->getPaginateByLimitOrder($input_post[body]));
+        dd($request);
+        return redirect('/');
     }
     
     public function like(Post $post)
     {
         $post->increment('like');
+        $post->like_updated_at = now();
+        $post->save();
         return redirect('/');
     }
 }
