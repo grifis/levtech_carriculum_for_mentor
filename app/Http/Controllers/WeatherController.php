@@ -12,4 +12,20 @@ class WeatherController extends Controller
         $posts=$weather->posts()->get();
         return view('rainy')->with(['weather' => $weather, 'posts' => $posts]);
     }
+    
+    public function index_sunny(Weather $weather)
+    {
+        $posts=$weather->posts()->get();
+        return view('sunny')->with(['weather' => $weather, 'posts' => $posts]);
+    }
+    
+    public function create_rainy(Weather $weather)
+    {
+        return view('create_rainy')->with(['weather' => $weather]);
+    }
+    
+    public function create_sunny(Weather $weather)
+    {
+        return view('create_sunny')->with(['weather' => $weather]);
+    }
 }

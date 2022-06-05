@@ -13,6 +13,7 @@ class Post extends Model
         'title',
         'body',
         'weather_id',
+        'category_id',
         ];
     
     // function getPaginateByLimit(int $limit_count = 5)

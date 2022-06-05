@@ -7,7 +7,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
-        <h1>Sunnyの投稿一覧</h1>
+        <h1>Episode in the sunny day.</h1>
         <h2>
             <a href='/weathers/rainy/1'>Rainy</a>
         </h2>
