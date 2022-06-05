@@ -3,11 +3,14 @@
     <head>
         <meta charset="utf-8">
         <title>Blog</title>
+        <link rel="stylesheet" href="{{asset('/css/index.css')}}">
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
-        <h1>レバテックチーム開発</h1>
+        <h1>雨の日わくわく掲示板</h1>
+        <!--今日の天気を表示してます。-->
+        <div>{{ $weather }}</div>
         <style>
         .word{
             color:red;
