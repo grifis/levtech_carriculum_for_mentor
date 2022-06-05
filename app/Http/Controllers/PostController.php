@@ -7,15 +7,16 @@ use App\Http\Requests\PostRequest;
 use App\Post;
 use App\Category;
 use GuzzleHttp\Client;
+use App\Kasa;
 
 class PostController extends Controller
 {
-    public function map(Post $post)
+    public function map(Kasa $kasa)
     {
         $lat = -54.625388616131495;
-        $lon = 158.8538197821135;
+        $lng = 158.8538197821135;
         $apiKey = '1236b67a22e6499c7370b9f6d925778f';
-        $url = "https://api.openweathermap.org/data/2.5/weather?lat=$lat&lon=$lon&appid=$apiKey";
+        $url = "https://api.openweathermap.org/data/2.5/weather?lat=$lat&lon=$lng&appid=$apiKey";
         $method = "GET";
         
         $client = new Client();
@@ -29,7 +30,12 @@ class PostController extends Controller
             $rain = 0;
         }
         
-        return view('posts/map')->with(['rain' => $rain]);
+        return view('posts/map')->with(['kasa'=>$kasa->get()]);
+    }
+    
+    public function kasa(Kasa $kasa)
+    {
+        return view('posts/umbrella')->with(['kasa'=>$kasa]);
     }
     
     public function show(Post $post)

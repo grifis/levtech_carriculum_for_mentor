@@ -13,11 +13,11 @@ class KasaTable extends Migration
      */
     public function up()
     {
-        Schema::create('kasa', function (Blueprint $table) {
+        Schema::create('kasas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->integer('lat')->nullable();
-            $table->integer('lng')->nullable();
+            $table->double('lat',20,17)->nullable();
+            $table->double('lng',20,17)->nullable();
             $table->integer('count')->nullable();
             
             $table->timestamps();
