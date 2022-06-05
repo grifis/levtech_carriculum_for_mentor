@@ -11,4 +11,10 @@ function initMap() {
     };
     // 地図のインスタンスを作成します。第一引数にはマップを描画する領域、第二引数にはオプションを指定
     mapObj = new google.maps.Map(map, opt);
+     // マーカーを設定
+    marker = new google.maps.Marker({
+        position: tokyoTower,
+        map: mapObj,
+        title: '東京タワー',
+    });
 }

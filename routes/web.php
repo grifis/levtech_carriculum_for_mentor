@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', 'OpenWeatherController@weatherData');
-//Route::get('/', 'PostController@index'); //一覧画面
+Route::get('/posts/join', 'OpenWeatherController@weatherData');
+Route::get('/', 'PostController@index'); //一覧画面
 //Route::get('/result', 'OpenWeatherController@weatherData');
 Route::get('/posts/create', 'PostController@create'); //投稿作成画面
 Route::get('/posts/{post}/edit', 'PostController@edit'); //投稿編集画面

@@ -20,7 +20,7 @@
     　　 {!! Form::hidden('lng','lng',['class'=>'lng_input']) !!}
     　　 {{--setlocation.jsを読み込んで、位置情報取得するまで押せないようにdisabledを付与し、非アクティブにする。--}}
     　　 {{--その後、disableはfalseになるようにsetlocation.js内に記述した--}}
-    　　 {!! Form::submit("周辺を表示", ['class' => "btn btn-success btn-block",'disabled']) !!}
+    　　 {!! Form::submit("現在地を表示", ['class' => "btn btn-success btn-block",'disabled']) !!}
     　　 {!! Form::close() !!}
     　
 	    
