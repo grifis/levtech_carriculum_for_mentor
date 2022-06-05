@@ -10,5 +10,5 @@ class Knowledge extends Model
     {
         return $this->inRandomOrder()->take($limit)->first();
     }
-    protected $table = 'knowledges';
+    protected $table = 'knowledge';
 }

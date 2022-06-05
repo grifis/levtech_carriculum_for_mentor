@@ -20,6 +20,11 @@ class Post extends Model
         return $this::with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
     
+    public function getPaginateByLimitLike(int $limit_count = 5)
+    {
+        return $this::with('like')->orderBy('like','DESC')->paginate($limit_count);
+    }
+    
     public function category()
     {
         return $this->belongsTo('App\Category');
