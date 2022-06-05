@@ -12,6 +12,7 @@
         <h1>雨の日わくわく掲示板</h1>
         </div>
         <!--今日の天気を表示してます。-->
+        <div class = "weather">{{ $weather }}</div>
         <style>
         .word{
             color:red;
@@ -32,14 +33,14 @@
         <div class = "word">
             <h2>{{ $knowledges->sentence }}</h2>
         </div>
-        <form action = "/update" method="GET">
+        <!--<form action = "/update" method="GET">
             <select name="update">
                 <option name = "select" value="update">更新順</option>
                 <option name = "select" value="like">いいね順</option>
                 <option name = "select" value="like_update">いいね更新順</option>
             </select>
             <input type="submit" value="更新"/>
-        </form>
+        </form>-->
         <h2>投稿一覧ページ</h2>
         <div class='posts'>
             @foreach($posts as $post)

@@ -15,4 +15,9 @@ class Like extends Model
     [
         'post_id'
     ];
+    
+    public function getPaginateByLimitLike(int $limit_count = 5)
+    {
+        return $this->orderBy('like','DESC')->paginate($limit_count);
+    }
 }
