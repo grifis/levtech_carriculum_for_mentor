@@ -9,6 +9,10 @@ use App\Category;
 use App\Comment;
 use App\Knowledge;
 use App\Like;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+
+
 
 class PostController extends Controller
 {
@@ -36,7 +40,7 @@ class PostController extends Controller
         $weather = $questions['current']['weather'][0]['description'];
         // dd($questions);
         // index bladeに取得したデータを渡す
-        // dd($knowledge->random());
+        //dd($knowledge->random());
         return view('posts/index')->with([
             'posts' => $post->getPaginateByLimit(),
             'weather' => $weather,
@@ -83,21 +87,74 @@ class PostController extends Controller
         return redirect('/');
     }
     
-    public function order(Request $request, Post $post, Knowledge $knowledge)
+/*    public function order(Request $request, Post $post, Knowledge $knowledge)
     {
         //dd($request->input('update'));
         if($request->input('update') == 'like'){
-            $test = $post->get();
-            dd($test->find(1)->id);
-            //dd($post);
+            $test = DB::table('posts')->join('likes', 'posts.id', '=', 'likes.post_id')->orderBy('likes.like', 'DESC')->get();
         }
-        return view('posts/index')->with(['posts' => $post->paginate(5), 'knowledges' => $knowledge->ramdom()]);
+        dd($test);
+        $post = $test;
+        
+        //return view('posts/index')->with(['posts' => $post->getPaginateByLimitLike(), 'knowledges' => $knowledge->ramdom()]);
+        // クライアントインスタンス生成
+        $client = new \GuzzleHttp\Client();
+
+        // GET通信するURL
+        $url = "https://api.openweathermap.org/data/2.5/onecall?lat=35.681236&lon=139.767125&units=metric&lang=ja&appid=b189686c28f3ce7905dca1b79969a9f1";
+
+        // リクエスト送信と返却データの取得
+        // Bearerトークンにアクセストークンを指定して認証を行う
+        $response = $client->request(
+            'GET',
+            $url,
+            ['Bearer' => config('services.OpenWeatherMap.token')]
+        );
+        
+        // API通信で取得したデータはjson形式なので
+        // PHPファイルに対応した連想配列にデコードする
+        $questions = json_decode($response->getBody(), true);
+        $weather = $questions['current']['weather'][0]['description'];
+        // dd($questions);
+        // index bladeに取得したデータを渡す
+        //dd($knowledge->random());
+        return view('posts/index')->with([
+            'posts' => $post,
+            'weather' => $weather,
+            'knowledges' => $knowledge->random()
+        ]);
     }
-    
+ */   
     public function like(Post $post, Knowledge $knowledge)
     {
         $post->like->increment('like');
         $post->like->save();
-        return view('posts/index')->with(['posts' => $post->getPaginateByLimit(), 'knowledges' => $knowledge->ramdom()]);
+        
+        // クライアントインスタンス生成
+        $client = new \GuzzleHttp\Client();
+
+        // GET通信するURL
+        $url = "https://api.openweathermap.org/data/2.5/onecall?lat=35.681236&lon=139.767125&units=metric&lang=ja&appid=b189686c28f3ce7905dca1b79969a9f1";
+
+        // リクエスト送信と返却データの取得
+        // Bearerトークンにアクセストークンを指定して認証を行う
+        $response = $client->request(
+            'GET',
+            $url,
+            ['Bearer' => config('services.OpenWeatherMap.token')]
+        );
+        
+        // API通信で取得したデータはjson形式なので
+        // PHPファイルに対応した連想配列にデコードする
+        $questions = json_decode($response->getBody(), true);
+        $weather = $questions['current']['weather'][0]['description'];
+        // dd($questions);
+        // index bladeに取得したデータを渡す
+        //dd($knowledge->random());
+        return view('posts/index')->with([
+            'posts' => $post->getPaginateByLimit(),
+            'weather' => $weather,
+            'knowledges' => $knowledge->random()
+        ]);
     }
 }
