@@ -29,6 +29,10 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    
+    'googlemap' => [
+        'apikey' => env('GOOGLE_MAP_API'),
+        ],
 
     'openweathermap' => [
         'key' => env('OPEN_WHATHER_MAP_API_KEY'),
