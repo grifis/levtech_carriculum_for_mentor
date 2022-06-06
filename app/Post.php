@@ -17,12 +17,17 @@ class Post extends Model
     
     function getPaginateByLimit(int $limit_count = 5)
     {
-        return $this::with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        return $this::with('category')->orderBy('created_at', 'DESC')->paginate($limit_count);
     }
     
-    public function getPaginateByLimitLike(int $limit_count = 5)
+    function getPaginateByLimitLike(int $limit_count = 5)
     {
-        return $this::with('like')->orderBy('like','DESC')->paginate($limit_count);
+        return $this::with('category')->orderBy('like', 'DESC')->paginate($limit_count);
+    }
+    
+    function getPaginateByLimitUpdate(int $limit_count = 5)
+    {
+        return $this::with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
     
     public function category()
