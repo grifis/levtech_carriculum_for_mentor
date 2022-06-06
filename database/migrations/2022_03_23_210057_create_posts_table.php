@@ -17,6 +17,8 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->string('title', 50); //タイトル
             $table->string('body', 200); //本文
+            $table->integer('like')->unsigned();
+            $table->timestamp('like_updated_at');
             $table->timestamps();
             $table->softDeletes();
         });

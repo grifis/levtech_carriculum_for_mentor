@@ -8,7 +8,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
-        <div class="top-wrapper">
+        <div class = "top-wrapper">
         <h1>雨の日わくわく掲示板</h1>
         </div>
         <!--今日の天気を表示してます。-->
@@ -18,29 +18,17 @@
             color:red;
             font-style:italic;
         }
-        <div　class ="weather">{{ $weather }}</div>
         </style>
-        
-        <style>
-        .word{
-            color:red;
-            font-style:italic;
-        }
-        </style>
-        <div class = "posting">
-            [<a href='/posts/create'>新規作成</a>]
-        </div>
         <div class = "word">
             <h2>{{ $knowledges->sentence }}</h2>
         </div>
-        <!--<form action = "/update" method="GET">
+        <form action = "/update" method="GET">
             <select name="update">
                 <option name = "select" value="update">更新順</option>
                 <option name = "select" value="like">いいね順</option>
-                <option name = "select" value="like_update">いいね更新順</option>
             </select>
             <input type="submit" value="更新"/>
-        </form>-->
+        </form>
         <h2>投稿一覧ページ</h2>
         <div class='posts'>
             @foreach($posts as $post)
@@ -50,7 +38,7 @@
                     </h3>
                     <p class='body'>本文：{{ $post->body}}</p>
                     <p>カテゴリー:<a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a></p>
-                    <p><a href="/like/{{ $post->id }}">いいね</a>：{{ $post->like->like }}（最新のいいね：{{ $post->like->updated_at}}）</p>
+                    <p><a href="/like/{{ $post->id }}">いいね</a>：{{ $post->like }}（最新のいいね：{{ $post->like_updated_at}}）</p>
                     <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}"  method="post" style="display:inline">
                         @csrf
                         @method('DELETE')
@@ -62,7 +50,9 @@
         <div class='paginate'>
             {{ $posts->links() }}
         </div>
-        
+        <div>
+            [<a href='/posts/create'>新規作成</a>]
+        </div>
     </body>
     <script>
         function deletePost(post_id) {
