@@ -7,8 +7,9 @@
     
 }
 .top-wrapper{
-  padding: 180px 0 100px 0;
+  padding: 100px 0 5px 0;
   background-image:url(../images/rain.jpeg);
-  color: white;
+  color: blue;
   background-size: cover;
+  height: 100px;
 }
