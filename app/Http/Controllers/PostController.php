@@ -15,6 +15,7 @@ class PostController extends Controller
     public function index(Post $post, Knowledge $knowledge)
     {
 
+        $knowledge_weather = new Knowledge();
         
         // クライアントインスタンス生成
         $client = new \GuzzleHttp\Client();
@@ -31,8 +32,19 @@ class PostController extends Controller
         );
         
         $questions = json_decode($response->getBody(), true);
+        //dd($questions);
         $weather = $questions['current']['weather'][0]['description'];
         
+        if(strpos($weather,"晴") === true){
+            $knowledge_weather = $knowledge->whereIn('weather',[0])->get();
+        }else if(strpos($weather,"曇") === true){
+            $knowledge_weather = $knowledge->whereIn('weather',[1])->get();
+        }else if(strpos($weather,"雨") === true){
+            $knowledge_weather = $knowledge->whereIn('weather',[2])->get();
+        }else{
+            $knowledge_weather = $knowledge->whereIn('weather',[3])->get();
+        }
+        //dd($knowledge_weather);
         return view('posts/index')->with([
             'posts' => $post->getPaginateByLimit(),
             'weather' => $weather,
