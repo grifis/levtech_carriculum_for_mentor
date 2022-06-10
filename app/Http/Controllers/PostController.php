@@ -32,23 +32,24 @@ class PostController extends Controller
         );
         
         $questions = json_decode($response->getBody(), true);
-        //dd($questions);
         $weather = $questions['current']['weather'][0]['description'];
+        //dd($weather);
         
-        if(strpos($weather,"晴") === true){
+        if(strpos($weather,'晴') == true){
             $knowledge_weather = $knowledge->whereIn('weather',[0])->get();
-        }else if(strpos($weather,"曇") === true){
+        }else if(strpos($weather,'曇') == true or strpos($weather,'雲') == true){
             $knowledge_weather = $knowledge->whereIn('weather',[1])->get();
-        }else if(strpos($weather,"雨") === true){
+        }else if(strpos($weather,'雨') == true){
             $knowledge_weather = $knowledge->whereIn('weather',[2])->get();
         }else{
             $knowledge_weather = $knowledge->whereIn('weather',[3])->get();
         }
         //dd($knowledge_weather);
+        
         return view('posts/index')->with([
             'posts' => $post->getPaginateByLimit(),
             'weather' => $weather,
-            'knowledges' => $knowledge->random()
+            'knowledges' => $knowledge_weather->random()
         ]);
         
     }
