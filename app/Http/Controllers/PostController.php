@@ -36,13 +36,13 @@ class PostController extends Controller
         //dd($weather);
         
         if(strpos($weather,'晴') == true){
-            $knowledge_weather = $knowledge->whereIn('weather',[0])->get();
+            $knowledge_weather = $knowledge->whereIn('weather',[0])->get(); //晴れ＝0
         }else if(strpos($weather,'曇') == true or strpos($weather,'雲') == true){
-            $knowledge_weather = $knowledge->whereIn('weather',[1])->get();
+            $knowledge_weather = $knowledge->whereIn('weather',[1])->get(); //曇り=1
         }else if(strpos($weather,'雨') == true){
-            $knowledge_weather = $knowledge->whereIn('weather',[2])->get();
+            $knowledge_weather = $knowledge->whereIn('weather',[2])->get(); //雨=2
         }else{
-            $knowledge_weather = $knowledge->whereIn('weather',[3])->get();
+            $knowledge_weather = $knowledge->whereIn('weather',[3])->get(); //その他=3
         }
         //dd($knowledge_weather);
         
