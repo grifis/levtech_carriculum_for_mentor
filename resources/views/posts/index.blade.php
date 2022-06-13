@@ -20,7 +20,7 @@
         }
         </style>
         <div class = "word">
-            <h2>{{ $knowledges->sentence }}</h2>
+            <marquee scrollamount="100"><h2>{{ $knowledges->sentence }}</h2></marquee>
         </div>
         <form action = "/update" method="GET">
             <select name="update">
