@@ -2,6 +2,22 @@
 
 use Illuminate\Support\Str;
 
+$host = '127.0.0.1';
+$db = 'forge';
+$user = 'forge';
+$password = '';
+
+if (env('DATABASE_URL', false) && env('DB_CONNECTION', 'mysql') === 'pgsql') {
+    // heroku-postgresql 用設定。
+    $match = [];
+    preg_match('/postgres:\/\/(.*?):(.*?)@(.*?):(.*?)\/(.*)/', env('DATABASE_URL'), $match);
+
+    $host = $match[3];
+    $db = $match[5];
+    $user = $match[1];
+    $password = $match[2];
+}
+
 return [
 
     /*
@@ -66,11 +82,11 @@ return [
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'host' => env('DB_HOST', $host),
             'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'database' => env('DB_DATABASE', $db),
+            'username' => env('DB_USERNAME', $user),
+            'password' => env('DB_PASSWORD', $password),
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
